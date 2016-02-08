@@ -11,69 +11,69 @@ import android.util.Log;
 import com.red_folder.phonegap.plugin.backgroundservice.BackgroundService;
 
 public class BeaconEpsiService extends BackgroundService {
-	
-	private final static String TAG = com.chocho.beacon.service.BeaconEpsiService.class.getSimpleName();
-	
-	private String mHelloTo = "World";
-	private String token = "";
 
-	@Override
-	protected JSONObject doWork() {
-		JSONObject result = new JSONObject();
-		
-		try {
-			SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
-			String now = df.format(new Date(System.currentTimeMillis())); 
+    private final static String TAG = com.chocho.beacon.service.BeaconEpsiService.class.getSimpleName();
 
-			String msg = "Hello " + this.mHelloTo + " - its currently " + now+" My token is "+token;
-			result.put("Message", msg);
+    private String token = "";
 
-			Log.d(TAG, msg);
-		} catch (JSONException e) {
-		}
-		
-		return result;	
-	}
+    @Override
+    protected JSONObject doWork() {
+        JSONObject result = new JSONObject();
 
-	@Override
-	protected JSONObject getConfig() {
-		JSONObject result = new JSONObject();
-		
-		try {
-			result.put("token", this.token);
-		} catch (JSONException e) {
-		}
-		
-		return result;
-	}
+        try {
+            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String now = df.format(new Date(System.currentTimeMillis()));
 
-	@Override
-	protected void setConfig(JSONObject config) {
-		try {
-			if (config.has("token"))
-				this.mHelloTo = config.getString("token");
-		} catch (JSONException e) {
-		}
-		
-	}     
+            String msg = "Hello - its currently " + now + " My token is " + token;
+            result.put("Message", msg);
 
-	@Override
-	protected JSONObject initialiseLatestResult() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+            Log.d(TAG, msg);
+        } catch (JSONException e) {
+        }
 
-	@Override
-	protected void onTimerEnabled() {
-		// TODO Auto-generated method stub
-		
-	}
+        return result;
+    }
 
-	@Override
-	protected void onTimerDisabled() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    protected JSONObject getConfig() {
+        JSONObject result = new JSONObject();
+
+        try {
+            result.put("token", this.token);
+        } catch (JSONException e) {
+        }
+
+        return result;
+    }
+
+    @Override
+    protected void setConfig(JSONObject config) {
+        try {
+            if (config.has("token")){
+                this.token = config.getString("token");
+            }
+        } catch (JSONException e) {
+        }
+
+    }
+
+    @Override
+    protected JSONObject initialiseLatestResult() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    protected void onTimerEnabled() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    protected void onTimerDisabled() {
+        // TODO Auto-generated method stub
+
+    }
 
 
 }
