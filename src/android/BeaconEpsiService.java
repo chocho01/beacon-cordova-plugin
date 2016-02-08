@@ -12,7 +12,7 @@ import com.red_folder.phonegap.plugin.backgroundservice.BackgroundService;
 
 public class BeaconEpsiService extends BackgroundService {
 	
-	private final static String TAG = com.red_folder.phonegap.plugin.backgroundservice.sample.BeaconEpsiService.class.getSimpleName();
+	private final static String TAG = com.chocho.beacon.service.BeaconEpsiService.class.getSimpleName();
 	
 	private String mHelloTo = "World";
 
