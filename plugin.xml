@@ -38,7 +38,7 @@
             
         </config-file>
         
-        <source-file src="src/android/MyService.java" target-dir="src/com/chocho/beacon/service" />
+        <source-file src="src/android/BeaconEpsiService.java" target-dir="src/com/chocho/beacon/service" />
     </platform>
 	
 </plugin>
