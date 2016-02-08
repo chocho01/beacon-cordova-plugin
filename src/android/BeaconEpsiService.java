@@ -15,6 +15,7 @@ public class BeaconEpsiService extends BackgroundService {
 	private final static String TAG = com.chocho.beacon.service.BeaconEpsiService.class.getSimpleName();
 	
 	private String mHelloTo = "World";
+	private String token = "";
 
 	@Override
 	protected JSONObject doWork() {
@@ -24,7 +25,7 @@ public class BeaconEpsiService extends BackgroundService {
 			SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
 			String now = df.format(new Date(System.currentTimeMillis())); 
 
-			String msg = "Hello " + this.mHelloTo + " - its currently " + now;
+			String msg = "Hello " + this.mHelloTo + " - its currently " + now+" My token is "+token;
 			result.put("Message", msg);
 
 			Log.d(TAG, msg);
@@ -39,7 +40,7 @@ public class BeaconEpsiService extends BackgroundService {
 		JSONObject result = new JSONObject();
 		
 		try {
-			result.put("HelloTo", this.mHelloTo);
+			result.put("token", this.token);
 		} catch (JSONException e) {
 		}
 		
@@ -49,8 +50,8 @@ public class BeaconEpsiService extends BackgroundService {
 	@Override
 	protected void setConfig(JSONObject config) {
 		try {
-			if (config.has("HelloTo"))
-				this.mHelloTo = config.getString("HelloTo");
+			if (config.has("token"))
+				this.mHelloTo = config.getString("token");
 		} catch (JSONException e) {
 		}
 		
